@@ -6,6 +6,7 @@ import com.hoodbrains.ktmdbapi.model.companies.AlternativeName
 import com.hoodbrains.ktmdbapi.model.companies.Company
 import com.hoodbrains.ktmdbapi.model.companies.CompanyLogos
 import com.hoodbrains.ktmdbapi.model.configuration.*
+import com.hoodbrains.ktmdbapi.model.credits.Credit
 import com.hoodbrains.ktmdbapi.model.genre.Genre
 
 interface TmdbApi {
@@ -14,6 +15,7 @@ interface TmdbApi {
     val genre: GenreApi
     val companies: CompanyApi
     val certifications: CertificationsApi
+    val creditsApi: CreditsApi
 
     interface ConfigurationApi {
         suspend fun fetchMain(): Configuration
@@ -30,13 +32,17 @@ interface TmdbApi {
     }
 
     interface CompanyApi {
-        suspend fun fetchCompany(id: Int): Company
-        suspend fun fetchAlternativeNames(id: Int): List<AlternativeName>
-        suspend fun fetchLogos(id: Int): CompanyLogos
+        suspend fun fetchCompany(companyId: Int): Company
+        suspend fun fetchAlternativeNames(companyId: Int): List<AlternativeName>
+        suspend fun fetchLogos(companyId: Int): CompanyLogos
     }
 
     interface CertificationsApi {
         suspend fun fetchTvCertifications(): TvCertifications
         suspend fun fetchMovieCertifications(): MovieCertifications
+    }
+
+    interface CreditsApi {
+        suspend fun fetchCredit(creditId : Int): Credit
     }
 }
