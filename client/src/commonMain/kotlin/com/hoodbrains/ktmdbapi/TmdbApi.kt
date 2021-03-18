@@ -8,6 +8,9 @@ import com.hoodbrains.ktmdbapi.model.companies.CompanyLogos
 import com.hoodbrains.ktmdbapi.model.configuration.*
 import com.hoodbrains.ktmdbapi.model.credits.Credit
 import com.hoodbrains.ktmdbapi.model.genre.Genre
+import com.hoodbrains.ktmdbapi.model.keywords.Keyword
+import com.hoodbrains.ktmdbapi.model.keywords.MovieList
+import com.hoodbrains.ktmdbapi.model.movies.Movie
 
 interface TmdbApi {
 
@@ -44,5 +47,10 @@ interface TmdbApi {
 
     interface CreditsApi {
         suspend fun fetchCredit(creditId : Int): Credit
+    }
+
+    interface KeywordsApi {
+        suspend fun fetchKeyword(keywordId : Int): Keyword
+        suspend fun fetchKeywordMovies(keywordId : Int): MovieList
     }
 }
